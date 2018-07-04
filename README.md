@@ -66,7 +66,7 @@ NANJWalletManager.instance.importWallet(String password, File keystore, NANJImpo
 
 + Nếu nhập ví thành công 
 ```onImportWalletSuccess()```
-
+++ Nếu địa chỉ ví NANJ  chưa được tạo thì sẽ tiến hành tạo.
 
 
 ### Xuất địa chỉ ví ra Private Key hoặc Key store
