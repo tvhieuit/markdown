@@ -14,42 +14,16 @@
 - Tool: [Android studio 3](https://developer.android.com/studio/)
 - Minimum sdk support: 18
 
-## Installation
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
-
-```bash
-$ gem install cocoapods
-```
-
-To integrate `NANJFrameworks` into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '10.0'
-use_frameworks!
-
-target '<Your Target Name>' do
-    pod 'NANJFrameworks'
-end
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
 
 ## Usage
 ### Khởi tạo
-- Trong `AppDelegate.swift` tiên cần import thư viện `NANJFrameworks`
-```swift
-import NANJFrameworks
-```
--  Điền thông tin sau vào bên dưới hàm didFinishLaunchingWithOptions
-```swift
-NANJWalletManager.shared.startConfig()
-NANJWalletManager.shared.setAppId("AppId")
-NANJWalletManager.shared.setAppKey("AppKey")
+- Tạo lớp `Application` và thêm vào manifest
+-  Điền thông tin sau vào bên dưới hàm onCreate()
+```new NANJWalletManager.Builder()
+                .setContext(getApplicationContext())
+                .setNANJAppId("AppId")
+                .setNANJSecret("SecretKey")
+                .build();
 ```
 
 ### Tạo địa ví mới
@@ -136,4 +110,4 @@ NANJCOIN, support@nanjcoin.com
 
 ## License
 
-NANJFrameworks is available under the MIT license. See the LICENSE file for more info.
+NANJ SDK is available under the MIT license. See the LICENSE file for more info.
