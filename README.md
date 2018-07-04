@@ -1,9 +1,5 @@
 # NANJCOIN GUILDELINE FOR ANDROID
 
-
-# NANJFrameworks
-
-
 ## Features
 
 - [x] Tạo ví NANJ
@@ -15,9 +11,8 @@
 - [x] Quét địa chỉ ví từ NFC
 
 ## Requirements
-- iOS 10.0+
-- Xcode 9.3+
-- Swift 3.1+
+- Tool: [Android studio 3](https://developer.android.com/studio/)
+- Minimum sdk support: 18
 
 ## Installation
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
