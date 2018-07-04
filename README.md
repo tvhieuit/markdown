@@ -72,40 +72,19 @@ NANJWalletManager.instance.importWallet(String password, File keystore, NANJImpo
 ### Xuất địa chỉ ví ra Private Key hoặc Key store
 - Sử dụng hàm sau để xuất ra Private Key
 
-```swift
-NANJWalletManager.shared.exportPrivateKey(wallet: "NANJWallet")
 ```
-`Private key` được trả về thông qua delegate với function
-```swift
-func didExportPrivatekey(wallet: NANJWallet, privateKey: String?, error: Error?, error: nil)
+NANJWalletManager.instance.exportPrivateKey() return private key hoặc null 
 ```
-Trả về `String` `privateKey` nếu xuất thành công.
 
-Ngược lại trả về một `Error`.
-- Sử dụng hàm sau để xuất ra Keystore
-```swift
-NANJWalletManager.shared.exportKeystore(wallet: "NANJWallet", password: "Password")
+Tương tự như export private key, export keystore sẽ trả về kết quả 
 ```
-Tương tự như export private key, export keystore sẽ trả về kết quả thông qua `delegate` với function
-```swift
-func didExportKeystore(wallet: NANJWallet, keyStore: String?, error: Error?)
+NANJWalletManager.instanc.exportKeystore(Password) return keystore hoặc null 
 ```
 
 ### Gửi NANJ Coin
-Để thực hiện việc gửi NANJ Coin tới một địa chỉ chúng ta gọi function sau ở đối tượng `NANJWallet` muốn gửi tiền đi
-```swift
-self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
-self.currentWallet?.delegate = self
-self.currentWallet?.sendNANJ(toAddress: "NANJ Address", amount: "Amount send")
+Để thực hiện việc gửi NANJ Coin tới một địa chỉ chúng ta gọi hàm sau ở đối tượng `NANJWallet` muốn gửi tiền đi
 ```
-Việc gửi thông tin gửi NANJCoin được xác nhận thành công qua `delegate`
-```swift
-func didSendNANJCompleted(transaction: NANJTransaction?)
-```
-
-Hoặc lỗi xảy ra khi nảy với function
-```swift
-func didSendNANJError(error: String?)
+sendNANJCoin(String toAddress, String amount, String message, SendNANJCoinListener callback)
 ```
 
 ## Author
