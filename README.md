@@ -66,7 +66,8 @@ NANJWalletManager.instance.importWallet(String password, File keystore, NANJImpo
 
 + Nếu nhập ví thành công 
 ```onImportWalletSuccess()```
-++ Nếu địa chỉ ví NANJ  chưa được tạo thì sẽ tiến hành tạo.
+
++ Nếu địa chỉ ví NANJ  chưa được tạo thì sẽ tiến hành tạo.
 
 
 ### Xuất địa chỉ ví ra Private Key hoặc Key store
@@ -86,6 +87,30 @@ NANJWalletManager.instanc.exportKeystore(Password) return keystore hoặc null
 ```
 sendNANJCoin(String toAddress, String amount, String message, SendNANJCoinListener callback)
 ```
+
++ NANJ cung cấp 2 hàm để lấy nhanh địa chỉ ví NANJ gửi đi 
+ ```
+ sendNANJCoinByQrCode(Activity activity)
+ ```
+ ```
+ sendNANJCoinByNfcCode(Activity activity)
+ ```
+ 
+ + Khi đọc ví thành công 
+ - Tạo handle `WalletHandle walletHandle = new WalletHandle();`
+ - Trong hàm `onActivityResult`
+ ```
+ walletHandle.onActivityResult(requestCode, resultCode, data);
+ ```
+ - Và địa chỉ NANJ được trả về trong hàm:
+ ```
+ walletHandle.setWalletAddressListener(new WalletHandle.WalletAddressListener() {
+            @Override
+            public void onWalletAddress(String address) {
+
+            }
+        });
+ ```
 
 ## Author
 
