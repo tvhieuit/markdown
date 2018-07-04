@@ -29,41 +29,44 @@ new NANJWalletManager.Builder()
 
 ### Tạo địa ví mới
 Để tạo một địa chỉ mới ta gọi tới hàm:
-```swift
-NANJWalletManager.shared.createWallet(password:"Password")
+```
+NANJWalletManager.instance.createWallet(NANJCreateWalletListener callback)
 ```
 
-Để nhận địa chỉ ví trả về khi thực hiện thành công ta cần lắng nghe `delegate` từ `NANJWalletManager`
-```swift
-NANJWalletManager.shared.delegate = self
+Khi tạo lỗi: 
 ```
-Khi địa chỉ ví ETH được tạo thành công ví ETH sẽ được trả về thông qua hàm sau, server sẽ tiến hành tạo ví NANJ
-```swift
-func didCreatingWallet(wallet: NANJWallet?)
+void onCreateWalletFailure()
 ```
-Ví NANJ được tạo thành công sẽ được trả về thông qua delegate với hàm
-```swift
-func didCreateWallet(wallet: NANJWallet?, error: Error?) {
+Khi địa chỉ ví ETH được tạo thành công `private key` sẽ được trả về thông qua hàm, server sẽ tiến hành tạo ví NANJ
+```
+void onCreateProcess(String privateKey)
+```
+Lấy địa chỉ NANJ từ địa chỉ ETH
+```
+NANJWalletManager.instance.getNANJWallet(ETH address)
 ```
 
 ### Nhập địa chỉ ví vào ứng dụng
 - Sử dụng Private Key
-```swift
-NANJWalletManager.shared.importWallet(privateKey: "Private Key")
+```
+NANJWalletManager.instance.importWallet(String privateKey, NANJImportWalletListener callback)
 ```
 - Sử dụng Key store (Chúng ta cần mật khẩu của key store)
-```swift
-NANJWalletManager.shared.importWallet(keyStore "Key Store", password "Password")
+```
+NANJWalletManager.instance.importWallet(String password, String keystore, NANJImportWalletListener callback)
 ```
 
-Nếu ví được nhập thành công và đã có ví `NANJ` sẽ đươc trả về thông qua `delegate` với hàm
-```swift
-func didImportWallet(wallet: NANJWallet?, error: Error?)
+- Sử dụng Key store file (Chúng ta cần mật khẩu của key store)
 ```
-Trả về `wallet` nếu ví được nhập thành công,
-`error` nếu ví nhập có lỗi xảy ra.
+NANJWalletManager.instance.importWallet(String password, File keystore, NANJImportWalletListener callback)
+```
 
-Ngược lại một ví NANJ sẽ được tạo như trong trường hợp tạo ví ETH thành công rồi tạo ví NANJ thông qua server.
++ Nếu nhập ví lỗi 
+```onImportWalletFailure()```
+
++ Nếu nhập ví thành công 
+```onImportWalletSuccess()```
+
 
 
 ### Xuất địa chỉ ví ra Private Key hoặc Key store
