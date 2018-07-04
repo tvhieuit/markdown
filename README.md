@@ -19,11 +19,12 @@
 ### Khởi tạo
 - Tạo lớp `Application` và thêm vào manifest
 -  Điền thông tin sau vào bên dưới hàm onCreate()
-```new NANJWalletManager.Builder()
-                .setContext(getApplicationContext())
-                .setNANJAppId("AppId")
-                .setNANJSecret("SecretKey")
-                .build();
+```
+new NANJWalletManager.Builder()
+      .setContext(getApplicationContext())
+      .setNANJAppId("AppId")
+      .setNANJSecret("SecretKey")
+      .build();
 ```
 
 ### Tạo địa ví mới
